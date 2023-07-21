@@ -1,0 +1,17 @@
+on: push
+
+jobs:
+  backfill-commits:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Backfill Commits
+        uses: bcanseco/github-contribution-graph-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_EMAIL: trajendbaj@gmail.com
+          MAX_DAYS: 360
+          MIN_COMMITS_PER_DAY: 1
+          MAX_COMMITS_PER_DAY: 5
+          INCLUDE_WEEKENDS: false
